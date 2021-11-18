@@ -1,7 +1,7 @@
 {
   "name": "ether.explore",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "license": "MIT",
   "type": "module",
   "scripts": {
