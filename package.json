@@ -5,7 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"nodemon src/server.js\" \"postcss src/tailwind.css -o public/styles/style.css --watch\""
+    "dev": "concurrently \"nodemon src/server.js\" \"postcss src/tailwind.css -o public/styles/style.css --watch\"",
+    "prod": "NODE_ENV=production postcss src/tailwind.css -o public/styles/style.css && node src/server.js"
   },
   "dependencies": {
     "autoprefixer": "^10.4.0",
@@ -20,5 +21,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "14.17.4"
   }
 }
