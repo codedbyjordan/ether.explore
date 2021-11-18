@@ -108,6 +108,6 @@ wss.on("connection", async (socket) => {
   });
 });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log(`The application started on port ${server.address().port}`);
 });
