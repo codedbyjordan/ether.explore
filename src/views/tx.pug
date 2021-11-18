@@ -10,19 +10,22 @@ html(lang="en")
     div(class="flex flex-col w-3/4 items-center mx-auto h-screen")
       include includes/nav.pug
       div(class="text-white flex flex-col items-center w-full")
-        div(class="bg-[#131313] border w-full border-gray-600 p-4 rounded-lg")
-          p(class="text-gray-700") Transaction hash
-          p(class="font-dmMono") #{txInfo.hash}
-        div(class="bg-dark-brown grid grid-cols-8 p-4 border w-full border-gray-600 rounded-lg mt-4")
-          div(class="flex flex-col text-gray-700 col-span-2")
-            span Amount transferred
-            span Transaction fee
-            span From
-            span To
-            span Confirmations
-          div(class="col-span-3")
-            p #{Number(txInfo.value).toFixed(3)} &approx; #{(txInfo.value * txInfo.etherPrice).toFixed(2)} USD
-            p #{Number(txInfo.transactionFee).toFixed(3)} ETH &approx; #{(txInfo.transactionFee * txInfo.etherPrice).toFixed(2)} USD
-            p #{txInfo.from}
-            p #{txInfo.to}
-            p #{txInfo.confirmations} #{txInfo.confirmations > 6 ? '' : '/ 6'}
+        unless txInfo.error 
+          div(class="bg-[#131313] border w-full border-gray-600 p-4 rounded-lg")
+            p(class="text-gray-700") Transaction hash
+            p(class="font-dmMono") #{txInfo.hash}
+            div(class="bg-dark-brown grid grid-cols-8 p-4 border w-full border-gray-600 rounded-lg mt-4")
+              div(class="flex flex-col text-gray-700 col-span-2")
+                span Amount transferred
+                span Transaction fee
+                span From
+                span To
+                span Confirmations
+              div(class="col-span-3")
+                p #{Number(txInfo.value).toFixed(3)} &approx; #{(txInfo.value * txInfo.etherPrice).toFixed(2)} USD
+                p #{Number(txInfo.transactionFee).toFixed(3)} ETH &approx; #{(txInfo.transactionFee * txInfo.etherPrice).toFixed(2)} USD
+                p #{txInfo.from}
+                p #{txInfo.to}
+                p #{txInfo.confirmations} #{txInfo.confirmations > 6 ? '' : '/ 6'}
+        else 
+          include includes/error.pug

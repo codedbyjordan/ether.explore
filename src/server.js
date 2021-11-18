@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 let __dirname = new URL(".", import.meta.url).pathname;
-if (process.platform == "win32") __dirname == __dirname.replace("/", "");
+if (process.platform == "win32") __dirname = __dirname.replace("/", "");
 
 const app = express();
 const server = http.createServer(app);
@@ -25,9 +25,9 @@ app.get("/", (req, res) => {
 app.get("/tx/:id", async (req, res) => {
   let txInfo = {};
 
-  const tx = await provider.getTransaction(req.params.id);
-  let etherPrice = await etherscanProvider.getEtherPrice();
   try {
+    const tx = await provider.getTransaction(req.params.id);
+    let etherPrice = await etherscanProvider.getEtherPrice();
     txInfo = {
       hash: tx.hash,
       from: tx.from,
@@ -74,9 +74,7 @@ app.get("/block/:num", async (req, res) => {
 
 app.get("/address/:addr", async (req, res) => {
   const address = req.params.addr;
-
   let addrInfo = {};
-
   try {
     let balance = await provider.getBalance(address);
     balance = Number(getEtherAmount(balance));
@@ -90,6 +88,7 @@ app.get("/address/:addr", async (req, res) => {
       transactionCount,
     };
   } catch (e) {
+    console.log(e);
     addrInfo = { error: "Invalid address" };
   }
   res.render("address", { addrInfo });
@@ -104,7 +103,7 @@ wss.on("connection", async (socket) => {
   provider.on("block", (blockNum) => {
     etherscanProvider.getEtherPrice().then((newPrice) => {
       price = newPrice;
-      socket.send(JSON.stringify({ blockNum, price }));
+      socket.send(JSON.stringify({ blockNum, price, prevPrice: price }));
     });
   });
 });
