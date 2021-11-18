@@ -1,4 +1,4 @@
-const client = new WebSocket(`ws://${window.location.hostname}`);
+const client = new WebSocket(`wss://${window.location.hostname}`);
 const blockNumText = document.getElementById("current-block");
 const priceText = document.getElementById("current-price");
 const prevPriceText = document.getElementById("previous-price");
