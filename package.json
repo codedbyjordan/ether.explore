@@ -1,0 +1,24 @@
+{
+  "name": "ether.explore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"nodemon src/server.js\" \"postcss src/tailwind.css -o public/styles/style.css --watch\""
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.0",
+    "concurrently": "^6.4.0",
+    "ethers": "^5.5.1",
+    "express": "^4.17.1",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.2",
+    "pug": "^3.0.2",
+    "tailwindcss": "^2.2.19",
+    "ws": "^8.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,28 @@
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    title ether.explore
+    link(href="./styles/style.css", rel="stylesheet")
+  body(class="bg-primary")
+    div(class="flex flex-col w-3/4 items-center mx-auto h-screen")
+      include includes/nav.pug
+      div(class="flex items-center w-full h-full")
+        div(class="bg-secondary rounded-xl text-white font-poppins w-full h-3/4 self-center mb-10 flex justify-center")
+          div(class="w-3/4")
+            div(class="flex flex-col text-center items-center h-full")
+              div(class="justify-self-start py-8")
+                h1(class="font-semibold text-4xl") Current Block
+                h2(class="text-4xl" id="current-block")
+              div(class="justify-self-center flex flex-1 flex-col h-full justify-center pb-36")
+                h1(class="font-semibold text-7xl") Current Price
+                h1(class="text-7xl" id="current-price") $
+                h2(class="text-4xl pt-12") Previous Price
+                h2(class="text-4xl" id="previous-price") $ 
+            
+    script 
+      include ../sockets.js
+  

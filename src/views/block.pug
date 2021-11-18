@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    title ether.explore
+    link(href="../styles/style.css", rel="stylesheet")
+  body(class="bg-primary")
+    div(class="flex flex-col w-3/4 items-center mx-auto h-screen")
+      include includes/nav.pug
+      div(class="text-white flex flex-col w-full items-center")
+        div(class="bg-dark-gray border w-full border-gray-600 p-4 rounded-lg")   
+          p(class="text-gray-700") Hash
+          span(class="font-dmMono") #{blockInfo.hash}
+        div(class="bg-dark-brown grid grid-cols-8 p-4 border w-full border-gray-600 rounded-lg mt-4")
+          div(class="flex flex-col text-gray-700")
+            span Mined on
+            span Transaction count
+            span Difficulty
+            span Miner 
+          div(class="col-span-4 pl-12")
+            p #{blockInfo.date}
+            p #{blockInfo.transactions.length}
+            p #{blockInfo.difficulty}
+            p #{blockInfo.miner}

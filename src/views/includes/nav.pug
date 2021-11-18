@@ -1,0 +1,16 @@
+nav(class="py-6 text-white w-full mx-auto")
+  ul(class="flex justify-between")
+    li(class="flex items-center")
+      img(src="https://raw.githubusercontent.com/codedbyjordan/ethereum-explorer/e5a261401586e8693b580f5719494c4933fd53f8/static/logo.svg", alt="logo" class="w-12 h-12")
+      h1(class="text-3xl font-bold font-poppins")
+        a(href="/") ether.explore 
+    li 
+      input(type="text", class="bg-transparent border-2 rounded-xl px-4 py-2 ml-4" id="query")
+      select(class="bg-transparent border-none outline-none" id="query-type") 
+        option(value="tx" class="bg-primary border-none") Transaction
+        option(value="block" class="bg-primary border-none") Block
+        option(value="address" class="bg-primary border-none") Address 
+      button(onclick=`buildEndpoint()`) Search
+
+script
+      include ../../buildEndpoint.js
