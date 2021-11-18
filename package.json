@@ -11,6 +11,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.0",
     "concurrently": "^6.4.0",
+    "dotenv": "^10.0.0",
     "ethers": "^5.5.1",
     "express": "^4.17.1",
     "postcss": "^8.3.11",
