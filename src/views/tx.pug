@@ -24,8 +24,10 @@ html(lang="en")
               div(class="col-span-3")
                 p #{Number(txInfo.value).toFixed(3)} &approx; #{(txInfo.value * txInfo.etherPrice).toFixed(2)} USD
                 p #{Number(txInfo.transactionFee).toFixed(3)} ETH &approx; #{(txInfo.transactionFee * txInfo.etherPrice).toFixed(2)} USD
-                p #{txInfo.from}
-                p #{txInfo.to}
+                p
+                  a(href=`/address/${txInfo.from}` class="underline") #{txInfo.from}
+                p
+                  a(href=`/address/${txInfo.to}` class="underline") #{txInfo.to}
                 p #{txInfo.confirmations} #{txInfo.confirmations > 6 ? '' : '/ 6'}
         else 
           include includes/error.pug
