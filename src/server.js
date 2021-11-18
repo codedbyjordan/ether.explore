@@ -7,7 +7,8 @@ import { getEtherAmount } from "./utils/getEtherAmount.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-const __dirname = new URL(".", import.meta.url).pathname.replace("/", "");
+let __dirname = new URL(".", import.meta.url).pathname;
+if (process.platform == "win32") __dirname == __dirname.replace("/", "");
 
 const app = express();
 const server = http.createServer(app);
